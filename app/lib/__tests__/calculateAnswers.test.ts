@@ -27,9 +27,9 @@ describe("checkAndFormat251Answers", () => {
     expect(result).toContain("<b>0/0</b>");
     // Should not contain any answers in the formatted list since there are none
     expect(result).not.toContain("<li>Cmaj7, D7, G7</li>");
-    expect(result).toContain("<ul>Actual student answers:");
+    expect(result).toContain("<ol>Actual student answers:");
     // Correct answers should be empty since there are none
-    expect(result).toContain("<ul>Correct answers: </ul>");
+    expect(result).toContain("<ol>Correct answers:");
   });
 
   test("should handle answers with both C Major examples and actual test answers", () => {
@@ -55,7 +55,8 @@ describe("checkAndFormat251Answers", () => {
     // Should contain the actual test answers
     expect(result).toContain("<li>Fmaj7, Bb7, Ebmaj7</li>");
     // Correct answers should only include the actual test answers
-    expect(result).toContain("<ul>Correct answers: Fmaj7, Bb7, Ebmaj7</ul>");
+    expect(result).toContain("<ol>Correct answers:");
+    expect(result).toContain("<li>Fmaj7</li><li>Bb7</li><li>Ebmaj7</li>");
   });
 });
 
@@ -73,7 +74,7 @@ describe("checkAndFormatKeySigIdentifyAnswers", () => {
 
     expect(result).toContain("<b>3/3</b>");
     expect(result).toContain("<li>G</li><li>D</li><li>A</li>");
-    expect(result).toContain("<ul>Correct answers: G, D, A</ul>");
+    expect(result).toContain("<ol>Correct answers: <li>G</li><li>D</li><li>A</li></ol>");
   });
 
   test("should handle incorrect student answers", () => {
@@ -89,7 +90,7 @@ describe("checkAndFormatKeySigIdentifyAnswers", () => {
 
     expect(result).toContain("<b>2/3</b>");
     expect(result).toContain("<li>G</li><li><b>C</b></li><li>A</li>");
-    expect(result).toContain("<ul>Correct answers: G, D, A</ul>");
+    expect(result).toContain("<ol>Correct answers: <li>G</li><li>D</li><li>A</li></ol>");
   });
 });
 
@@ -109,7 +110,9 @@ describe("checkAndFormatChordIdentifyAnswers", () => {
 
     expect(result).toContain("<b>3/3</b>");
     expect(result).toContain("<li>Cmaj7</li><li>Dm7</li><li>G7</li>");
-    expect(result).toContain("<ul>Correct answers: Cmaj7, Dm7, G7</ul>");
+    expect(result).toContain(
+      "<ol>Correct answers: <li>Cmaj7</li><li>Dm7</li><li>G7</li></ol>"
+    );
   });
 
   test("should handle incorrect student answers", () => {
@@ -129,7 +132,9 @@ describe("checkAndFormatChordIdentifyAnswers", () => {
     expect(result).toContain(
       "<li>Cmaj7</li><li><b>D7</b></li><li><b>Gmaj7</b></li>"
     );
-    expect(result).toContain("<ul>Correct answers: Cmaj7, Dm7, G7</ul>");
+    expect(result).toContain(
+      "<ol>Correct answers: <li>Cmaj7</li><li>Dm7</li><li>G7</li></ol>"
+    );
   });
 });
 
@@ -221,7 +226,9 @@ describe("checkAndFormatChordAnswers", () => {
 
     expect(result).toContain("<b>2/2</b>");
     expect(result).toContain("<li>C, E, G</li><li>D, F, A</li>");
-    expect(result).toContain("<ol>Correct answers: C, E, G, D, F, A</ol>");
+    expect(result).toContain(
+      "<ol>Correct answers:<li>C, E, G</li><li>D, F, A</li></ol>"
+    );
   });
 
   test("should handle incorrect student answers", () => {
@@ -240,6 +247,8 @@ describe("checkAndFormatChordAnswers", () => {
 
     expect(result).toContain("<b>1/2</b>");
     expect(result).toContain("<li>C, E, G</li><li><b>D, F#, A</b></li>");
-    expect(result).toContain("<ol>Correct answers: C, E, G, D, F, A</ol>");
+    expect(result).toContain(
+      "<ol>Correct answers:<li>C, E, G</li><li>D, F, A</li></ol>"
+    );
   });
 });
