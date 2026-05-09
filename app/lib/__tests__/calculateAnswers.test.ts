@@ -180,6 +180,28 @@ describe("checkAndFormatArrOfArrsAnswers", () => {
       "<ol>Correct answers:<li>C, E, G</li><li>D, F, A</li></ol>"
     );
   });
+
+  test("should mark missing notes as incorrect", () => {
+    const userAnswers = [
+      ["Bb", "Eb", "Ab"],
+      ["F#", "C#", "G#", "D#", "A#", "E#"],
+    ];
+    const correctAnswers = [
+      ["Bb", "Eb", "Ab", "Db", "Gb"],
+      ["F#", "C#", "G#", "D#", "A#", "E#"],
+    ];
+    const questionType = "Key Signature Notation";
+
+    const result = checkAndFormatArrOfArrsAnswers(
+      userAnswers,
+      correctAnswers,
+      questionType
+    );
+
+    expect(result).toContain("<b>1/2</b>");
+    expect(result).toContain("<b>(Missing Db)</b>");
+    expect(result).toContain("<b>(Missing Gb)</b>");
+  });
 });
 
 describe("checkAndFormatChordAnswers", () => {

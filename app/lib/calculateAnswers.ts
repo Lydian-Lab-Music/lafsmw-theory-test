@@ -143,23 +143,37 @@ export const checkAndFormatArrOfArrsAnswers = (
       actualStudentAnswers += `<li><b>(No answer provided)</b></li>`;
     } else {
       let isCorrect = true;
-      let formattedUserAnswer = userAnswers[i]
-        .map((answer, j) => {
-          const userNote = answer.split("/")[0];
-          const correctNote = correctAnswers[i][j];
+      const currentUserAnswer = userAnswers[i];
+      const currentCorrectAnswer = correctAnswers[i];
+      const maxNotesLength = Math.max(
+        currentUserAnswer.length,
+        currentCorrectAnswer.length
+      );
 
-          // Normalize note name for case-insensitive comparison
-          // This handles the special B/b case and any other case differences
+      const formattedUserAnswer = Array.from(
+        { length: maxNotesLength },
+        (_, j) => {
+          const userAnswer = currentUserAnswer[j];
+          const userNote = userAnswer?.split("/")[0];
+          const correctNote = currentCorrectAnswer[j];
+
+          // Normalize note names for case-insensitive comparison.
           const normalizedUserNote = userNote?.toLowerCase() || "";
           const normalizedCorrectNote = correctNote?.toLowerCase() || "";
+          const isMatch = normalizedUserNote === normalizedCorrectNote;
 
-          if (normalizedUserNote !== normalizedCorrectNote) {
+          if (!isMatch) {
             isCorrect = false;
-            return `<b>${userNote}</b>`;
           }
-          return userNote;
-        })
-        .join(", ");
+
+          if (userNote) {
+            return isMatch ? userNote : `<b>${userNote}</b>`;
+          }
+
+          // Required accidental/note is missing from student response.
+          return `<b>(Missing ${correctNote})</b>`;
+        }
+      ).join(", ");
 
       if (isCorrect) score++;
       actualStudentAnswers += `<li>${formattedUserAnswer}</li>`;
