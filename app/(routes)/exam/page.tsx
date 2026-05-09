@@ -368,7 +368,7 @@ export default function ExamHomePage() {
             <li>Link to blues progression pdf: ${correctedAnswers[8]}</li>
           </ul>
 
-          <p>Thank you,<br>Team at Lydian Labs Technology.</p>`,
+          <p>Thank you,<br>Team at Lydian Lab Music.</p>`,
         }),
       });
       if (!response.ok) {
