@@ -21,16 +21,15 @@
 
 ## About
 
-This web application was contracted to Lydian Labs Technology by Lafayette Summer Jazz Workshop director Kyle Athayde. Its functional purpose is to replace their current music theory entrance exam.
+This web application was contracted to Lydian Lab Music by Lafayette Summer Jazz Workshop director Kyle Athayde. Its functional purpose is to replace their current music theory entrance exam.
 [Click here for more information about the camp](https://lafayettejazz.wpcomstaging.com/auditions/)
-  
+
 ### Features
 
 - Interactive notation: note input/erase and sharp and flat input via mouse click
 - Automated grading
 - Timed test: automatically goes to final submit button page after alotted time is up
 - Clear, minimalist design to allow for a comfortable, distraction-free user experience
-
 
 ### Developer Features
 
@@ -40,6 +39,7 @@ This web application was contracted to Lydian Labs Technology by Lafayette Summe
 - Error monitoring with Sentry
 
 ### Examples
+
 <img width="1705" alt="Screenshot 2024-06-26 at 5 20 08 PM" src="https://github.com/Lydian-Labs/lafsmw-theory-test/assets/76603041/7561b846-83dd-4730-ace6-96e80eaf20b8">
 <img width="1704" alt="Screenshot 2024-06-26 at 5 20 40 PM" src="https://github.com/Lydian-Labs/lafsmw-theory-test/assets/76603041/baf2a1fa-f554-450c-a2fc-b8de87b152fe">
 <img width="1703" alt="Screenshot 2024-06-26 at 5 22 22 PM" src="https://github.com/Lydian-Labs/lafsmw-theory-test/assets/76603041/81da7ffe-bb78-4fbc-bb56-8dacf6478aca">
@@ -51,4 +51,4 @@ This web application was contracted to Lydian Labs Technology by Lafayette Summe
 
 <br />
 
-Copyright© Lydian Labs Music Education Technology, 2024
+Copyright © Lydian Lab Music, 2026
